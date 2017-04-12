@@ -1,0 +1,19 @@
+<template name="App_home">
+    <div class="container">
+        {{> ui_components_fileList}}
+
+        <br><br><br>
+
+        {{> uploadForm}}
+
+    </div>
+</template>
+
+<template name="uploadForm">
+    {{#with currentUpload}}
+        Uploading <b>{{file.name}}</b>:
+        <span id="progress">{{progress.get}}%</span>
+    {{else}}
+        <input id="fileInput" type="file" />
+    {{/with}}
+</template>
