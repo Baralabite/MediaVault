@@ -1,6 +1,7 @@
 import './home.html';
 
 import '../../components/fileList/fileList.js';
+import '../../modals/deleteFile/deleteFile.js';
 import { Files } from '../../../api/files/files.js';
 
 Template.uploadForm.onCreated(function () {
@@ -22,9 +23,6 @@ Template.uploadForm.events({
                 file: e.currentTarget.files[0],
                 streams: 'dynamic',
                 chunkSize: 'dynamic',
-                meta: {
-
-                }
             }, false);
 
             upload.on('start', function () {

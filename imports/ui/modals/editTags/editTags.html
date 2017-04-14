@@ -1,0 +1,11 @@
+<template name="ui_modals_editTags">
+    {{# ui_modals_modalTemplate modalID=modalID title="Tags"}}
+        <div class="modal-body">
+            <input class="mv-tags" type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo"/>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger deleteFile" data-dismiss="modal">Delete file</button>
+        </div>
+    {{/ui_modals_modalTemplate}}
+</template>

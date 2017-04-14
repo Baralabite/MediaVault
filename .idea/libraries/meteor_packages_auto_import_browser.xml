@@ -64,6 +64,8 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/setup.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/server.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/chrismbeckett_toastr/2.1.2_1/web.browser/packages/chrismbeckett_toastr/lib/toastr.css" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/chrismbeckett_toastr/2.1.2_1/web.browser/packages/chrismbeckett_toastr.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.14/web.browser/client_main.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.14/web.browser/server_tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.14/web.browser/server_main.js" />
@@ -459,6 +461,8 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/client.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/setup.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/server.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/chrismbeckett_toastr/2.1.2_1/web.browser/packages/chrismbeckett_toastr/lib/toastr.css" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/chrismbeckett_toastr/2.1.2_1/web.browser/packages/chrismbeckett_toastr.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.14/web.browser/client_main.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.14/web.browser/server_tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/accounts-base/1.2.14/web.browser/server_main.js" />

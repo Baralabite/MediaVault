@@ -1,27 +1,7 @@
 <template name="ui_components_fileList">
     <ul class="list-group">
         {{#each getFiles}}
-            {{> fileItem doc=this}}
+            {{> ui_components_fileItem file=this}}
         {{/each}}
     </ul>
-</template>
-
-<template name="fileItem">
-    <li class="list-group-item">
-            <span class="pull-right">
-                <a class="btn btn-xs btn-success mv-downloadFile" href="{{getLink doc._id}}" download="{{doc.name}}" target="_parent">
-                    <span class="glyphicon glyphicon-download"></span>
-                </a>
-
-                <button class="btn btn-xs btn-primary mv-editFile">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-
-                <button class="btn btn-xs btn-danger mv-deleteFile">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </span>
-
-        {{doc.name}}
-    </li>
 </template>
