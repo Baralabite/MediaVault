@@ -2,8 +2,7 @@
     {{#ui_modals_modalTemplate modalID=modalID title="Share"}}
         <div class="modal-body">
             <p id="blah" class="mv-publicLink">Click link to copy to clipboard</p>
-            <div class="well well-sm mv-publicLink">{{getPublicLink}}</div>
-            <input type="text" class="form-control mv-publicLink" value="{{getPublicLink}}" >
+            <input type="text" class="form-control mv-publicLink" value="{{getPublicLink}}" readonly>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

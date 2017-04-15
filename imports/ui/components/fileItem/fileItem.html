@@ -1,6 +1,6 @@
 <template name="ui_components_fileItem">
     <li class="list-group-item mv-fileItem">
-        {{file.name}}
+        <a href="{{getLink file._id}}" target="_blank">{{file.name}}</a>
 
 
         <span class="pull-right">
@@ -16,15 +16,16 @@
                 <span class="glyphicon glyphicon-download"></span>
             </a>
 
-            <!--<button class="btn btn-xs btn-primary mv-editFile">
+            <button class="btn btn-xs btn-info" type="button" data-toggle="modal" data-target="#renameModal_{{file._id}}">
                 <span class="glyphicon glyphicon-pencil"></span>
-            </button>-->
+            </button>
 
             <button class="btn btn-xs btn-danger mv-deleteFile" type="button" data-toggle="modal" data-target="#delModal_{{file._id}}">
                 <span class="glyphicon glyphicon-remove"></span>
             </button>
         </span>
 
+        {{> ui_modals_renameFile modalID=(getRenameModalID file._id) file=file}}
         {{> ui_modals_shareFile modalID=(getShareModalID file._id) file=file}}
         {{> ui_modals_editTags modalID=(getTagsModalID file._id) file=file}}
         {{> ui_modals_deleteFile modalID=(getDeleteModalID file._id) file=file}}

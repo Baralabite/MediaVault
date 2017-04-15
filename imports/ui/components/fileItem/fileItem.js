@@ -5,6 +5,7 @@ import './fileItem.html';
 import './fileItem.less';
 import '../../modals/editTags/editTags.js';
 import '../../modals/shareFile/shareFile.js';
+import '../../modals/renameFile/renameFile.js';
 
 import { Files } from '../../../api/files/files.js';
 
@@ -23,6 +24,10 @@ Template.ui_components_fileItem.helpers({
 
     getShareModalID: (id) => {
         return "shareModal_"+id;
+    },
+
+    getRenameModalID: (id) => {
+        return "renameModal_"+id;
     }
 });
 
