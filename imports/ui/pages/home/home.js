@@ -31,9 +31,10 @@ Template.uploadForm.events({
 
             upload.on('end', function (error, fileObj) {
                 if (error) {
-                    alert('Error during upload: ' + error);
+                    //alert('Error during upload: ' + error);
+                    toastr.error('Error during upload: ' + error, "Error")
                 } else {
-                    alert('File "' + fileObj.name + '" successfully uploaded');
+                    toastr.success('File "' + fileObj.name + '" successfully uploaded', "Uploaded.")
                 }
                 template.currentUpload.set(false);
             });

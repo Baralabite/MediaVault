@@ -4,6 +4,7 @@
 import './fileItem.html';
 import './fileItem.less';
 import '../../modals/editTags/editTags.js';
+import '../../modals/shareFile/shareFile.js';
 
 import { Files } from '../../../api/files/files.js';
 
@@ -18,6 +19,10 @@ Template.ui_components_fileItem.helpers({
 
     getDeleteModalID: (id) => {
         return "delModal_"+id;
+    },
+
+    getShareModalID: (id) => {
+        return "shareModal_"+id;
     }
 });
 
