@@ -34,3 +34,5 @@ accounts-google
 accounts-ui
 fortawesome:fontawesome
 chrismbeckett:toastr
+shell-server
+erasaur:meteor-lodash

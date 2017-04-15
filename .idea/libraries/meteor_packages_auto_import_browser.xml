@@ -280,7 +280,9 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/compiler/foo.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/reporters/json.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/reporters/nyan.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/erasaur_meteor-lodash/4.0.0/web.browser/export.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/duration.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/erasaur_meteor-lodash/4.0.0/web.browser/lodash/lodash.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/required-tokens.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/timeout.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/root.js" />
@@ -677,7 +679,9 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/compiler/foo.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/reporters/json.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/reporters/nyan.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/erasaur_meteor-lodash/4.0.0/web.browser/export.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/duration.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/erasaur_meteor-lodash/4.0.0/web.browser/lodash/lodash.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/required-tokens.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/timeout.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/root.js" />

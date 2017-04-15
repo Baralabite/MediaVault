@@ -15,3 +15,8 @@ Tags.schema = new SimpleSchema({
 });
 
 Tags.attachSchema(Tags.schema);
+
+Tags.allow({
+    insert: () => true,
+    remove: () => true
+});
