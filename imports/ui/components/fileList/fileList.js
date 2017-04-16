@@ -3,15 +3,16 @@
  */
 import './fileList.html';
 import '../fileItem/fileItem.js';
-
+import '../spinner/spinner.js';
 import { Files } from '../../../api/files/files.js';
 
 Template.ui_components_fileList.onCreated(() => {
-    Meteor.subscribe("files");
+    Template.instance().subscribe("files");
 });
 
 Template.ui_components_fileList.helpers({
-    getFiles: () => {
-        return Files.find().fetch();
+    getFiles: () => Template.instance().data.files,
+    getFileDoc: (id) => {
+        return Files.find(id).fetch()[0];
     }
 });

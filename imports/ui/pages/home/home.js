@@ -2,7 +2,22 @@ import './home.html';
 
 import '../../components/fileList/fileList.js';
 import '../../modals/deleteFile/deleteFile.js';
+import '../../components/spinner/spinner.js';
 import { Files } from '../../../api/files/files.js';
+import { queryFiles } from '../../../api/files/methods.js';
+
+Template.App_home.onCreated(() => {
+    Template.instance().subscribe("files");
+});
+
+Template.App_home.helpers({
+    getFiles: () => {
+        let query = FlowRouter.getQueryParam("search");
+        query = query ? query : "";
+        a = queryFiles.call({query: query});
+        return a;
+    }
+});
 
 Template.uploadForm.onCreated(function () {
     this.currentUpload = new ReactiveVar(false);

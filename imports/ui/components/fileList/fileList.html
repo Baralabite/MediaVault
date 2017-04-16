@@ -1,7 +1,11 @@
 <template name="ui_components_fileList">
     <ul class="list-group">
-        {{#each getFiles}}
-            {{> ui_components_fileItem file=this}}
-        {{/each}}
+        {{#if Template.subscriptionsReady}}
+            {{#each getFiles}}
+                {{> ui_components_fileItem file=(getFileDoc this)}}
+            {{/each}}
+        {{else}}
+            {{> ui_components_spinner}}
+        {{/if}}
     </ul>
 </template>

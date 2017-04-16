@@ -1,6 +1,10 @@
 <template name="App_home">
     <div class="container">
-        {{> ui_components_fileList}}
+        {{#if Template.subscriptionsReady}}
+            {{> ui_components_fileList files=getFiles}}
+        {{else}}
+            {{ui_components_spinner}}
+        {{/if}}
 
         <br><br><br>
 

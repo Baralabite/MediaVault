@@ -52,7 +52,6 @@ Template.ui_components_tagEditor.events({
             fileID: template.data.file._id,
             tagName: event.item
         };
-        console.log(doc);
         id = Tags.findOne(doc)._id;
         Tags.remove(id);
     }
