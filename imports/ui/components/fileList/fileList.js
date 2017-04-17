@@ -14,5 +14,8 @@ Template.ui_components_fileList.helpers({
     getFiles: () => Template.instance().data.files,
     getFileDoc: (id) => {
         return Files.find(id).fetch()[0];
+    },
+    isEmpty: () => {
+        return Template.instance().data.files.length == 0;
     }
 });

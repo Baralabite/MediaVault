@@ -8,7 +8,7 @@ Template.ui_components_navbar.helpers({
 });
 
 Template.ui_components_navbar.events({
-    "change .mv-searchInput": (event, template) => {
+    "keyup .mv-searchInput": (event, template) => {
         FlowRouter.setQueryParams({"search": event.target.value});
     }
 });

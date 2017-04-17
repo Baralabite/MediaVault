@@ -1,7 +1,7 @@
 <template name="ui_components_fileItem">
     <li class="list-group-item mv-fileItem">
         <a href="{{getLink file._id}}" target="_blank">{{file.name}}</a>
-
+        {{getFileSize file}}MB
 
         <span class="pull-right">
             <button class="btn btn-xs btn-warning" type="button" data-toggle="modal" data-target="#shareModal_{{file._id}}">
@@ -14,6 +14,7 @@
 
             <a class="btn btn-xs btn-success mv-downloadFile" href="{{getLink file._id}}" download="{{file.name}}" target="_parent">
                 <span class="glyphicon glyphicon-download"></span>
+                <span class="badge">{{getNumberOfDownloads}}</span>
             </a>
 
             <button class="btn btn-xs btn-info" type="button" data-toggle="modal" data-target="#renameModal_{{file._id}}">

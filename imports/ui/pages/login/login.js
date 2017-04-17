@@ -7,9 +7,10 @@ import './login.less';
 Template.loginButtonsBig.events({
     'click a#loginGoogle': function(e, t) {
         e.preventDefault();
-
-        Meteor.loginWithGoogle({
-            requestOfflineToken: 'true'
-        }, FlowRouter.go('user'));
+        Meteor.loginWithGoogle((error) => {
+            if(error==undefined){
+                FlowRouter.go("/");
+            }
+        });
     }
 });

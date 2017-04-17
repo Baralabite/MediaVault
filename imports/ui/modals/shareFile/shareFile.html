@@ -3,6 +3,14 @@
         <div class="modal-body">
             <p id="blah" class="mv-publicLink">Click link to copy to clipboard</p>
             <input type="text" class="form-control mv-publicLink" value="{{getPublicLink}}" readonly>
+
+
+            {{#if isPublic}}
+                <label><input class="mv-isPublic" type="checkbox" value="" checked>Public</label>
+            {{else}}
+                <label><input class="mv-isPublic" type="checkbox" value="">Public</label>
+            {{/if}}
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

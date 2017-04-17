@@ -5,5 +5,10 @@ import { Meteor } from 'meteor/meteor';
 import { Files } from '../files.js';
 
 Meteor.publish('files', function () {
-    return Files.find().cursor;
+    return Files.find({
+        $or: [
+            {userId: this.userId},
+            {global: true}
+        ]
+    }).cursor;
 });

@@ -28,12 +28,20 @@ Template.ui_components_fileItem.helpers({
 
     getRenameModalID: (id) => {
         return "renameModal_"+id;
+    },
+
+    getFileSize: (file) => {
+        return (file.size / 1048576).toFixed(2);
+    },
+
+    getNumberOfDownloads: (file) => {
+        file = Template.instance().data.file;
+        return file.downloads ? file.downloads : 0;
     }
 });
 
 Template.ui_components_fileItem.events({
-    "click .mv-editFile": function(event, template){
-        console.log(this.file._id);
-        console.log(this.file)
-    },
+    "click .mv-downloadFile": function(){
+        Meteor.call("Files.methods.incrementDownloads", {id: this.file._id});
+    }
 });

@@ -56,3 +56,30 @@ export const queryFiles = new ValidatedMethod({
         return _.uniq(endFiles.concat(endTags));
     }
 });
+
+export const incrementDownloads = new ValidatedMethod({
+    name: "Files.methods.incrementDownloads",
+    validate: new SimpleSchema({
+        id: {
+            type: String
+        }
+    }).validator(),
+    run: ({id}) => {
+        Files.update(id, {$inc: {downloads: 1}});
+    }
+});
+
+export const setPublic = new ValidatedMethod({
+    name: "Files.methods.setPublic",
+    validate: new SimpleSchema({
+        id: {
+            type: String
+        },
+        public: {
+            type: Boolean
+        }
+    }).validator(),
+    run: ({id, public}) => {
+        Files.update(id, {$set: {"global": public}});
+    }
+});
