@@ -9,10 +9,11 @@ import '../../ui/pages/not-found/not-found.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
-  name: 'App.home',
-  action() {
-    BlazeLayout.render('App_body', { main: 'App_home' });
-  },
+    name: 'App.home',
+    triggersEnter: [checkForLogin],
+    action() {
+        BlazeLayout.render('App_body', { main: 'App_home' });
+    }
 });
 
 FlowRouter.notFound = {
@@ -26,3 +27,9 @@ FlowRouter.route('/login', {
     BlazeLayout.render('ui_pages_login');
   }
 });
+
+function checkForLogin(){
+  if(Meteor.userId()==undefined){
+    FlowRouter.go("/login");
+  }
+}

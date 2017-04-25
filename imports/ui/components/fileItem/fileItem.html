@@ -2,6 +2,7 @@
     <li class="list-group-item mv-fileItem">
         <a href="{{getLink file._id}}" target="_blank">{{file.name}}</a>
         {{getFileSize file}}MB
+        {{getUploaderName}}
 
         <span class="pull-right">
             <button class="btn btn-xs btn-warning" type="button" data-toggle="modal" data-target="#shareModal_{{file._id}}">

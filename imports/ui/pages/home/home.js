@@ -1,13 +1,19 @@
 import './home.html';
+import './home.less';
 
 import '../../components/fileList/fileList.js';
 import '../../modals/deleteFile/deleteFile.js';
 import '../../components/spinner/spinner.js';
 import { Files } from '../../../api/files/files.js';
 import { queryFiles } from '../../../api/files/methods.js';
+import '../../modals/uploadFile/uploadFile.js';
 
 Template.App_home.onCreated(() => {
     Template.instance().subscribe("files");
+});
+
+Template.App_home.onRendered(() => {
+    $("#uploadDropZone").dropzone({url: "/"});
 });
 
 Template.App_home.helpers({
@@ -45,6 +51,7 @@ Template.uploadForm.events({
             });
 
             upload.on('end', function (error, fileObj) {
+                console.log(fileObj);
                 if (error) {
                     //alert('Error during upload: ' + error);
                     toastr.error('Error during upload: ' + error, "Error")

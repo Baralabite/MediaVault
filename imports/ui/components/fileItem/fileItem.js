@@ -9,7 +9,22 @@ import '../../modals/renameFile/renameFile.js';
 
 import { Files } from '../../../api/files/files.js';
 
+Template.ui_components_fileItem.onCreated(() => {
+    uploaderName = new ReactiveVar();
+    Template.instance().uploaderName = uploaderName;
+
+    Meteor.call("Users.methods.getProfileName", {id: Template.instance().data.file.userId}, (err, res)=> {
+        console.log(res);
+        uploaderName.set(res);
+
+    });
+});
+
 Template.ui_components_fileItem.helpers({
+    getUploaderName: () => {
+        return Template.instance().uploaderName.get();
+    },
+
     getLink: (id) => {
         return Files.findOne(id).link();
     },

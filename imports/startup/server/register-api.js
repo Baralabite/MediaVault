@@ -8,3 +8,5 @@ import '../../api/tags/server/publications.js';
 
 import '../../api/files/methods.js';
 import '../../api/files/server/publications.js';
+
+import '../../api/users/methods.js';
