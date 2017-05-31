@@ -1,11 +1,12 @@
 <template name="ui_modals_deleteFile">
-    {{#ui_modals_modalTemplate modalID=modalID title="Delete"}}
-        <div class="modal-body">
+    {{#ui_modals_modalTemplate modalID=modalID}}
+        <div class="modal-content">
+            <h4>Delete</h4>
             Would you really like to delete {{file.name}}?
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger deleteFile" data-dismiss="modal">Delete file</button>
+            <a href="#!" class="deleteFile modal-action modal-close waves-effect waves-green btn-flat red white-text">Delete</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
         </div>
     {{/ui_modals_modalTemplate}}
 </template>

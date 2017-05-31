@@ -17,7 +17,6 @@ Template.ui_modals_deleteFile.events({
         callback = () => {
             that = this;
             return function() {
-                console.log(event, template);
                 toastr.success("Deleted "+that.file.name, "Deleted file.");
                 Meteor.call("Files.methods.delete", {_id: that.file._id});
             }

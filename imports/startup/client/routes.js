@@ -10,7 +10,7 @@ import '../../ui/pages/not-found/not-found.js';
 // Set up all routes in the app
 FlowRouter.route('/', {
     name: 'App.home',
-    // triggersEnter: [checkForLogin],
+    triggersEnter: [checkForLogin],
     action() {
         BlazeLayout.render('App_body', { main: 'App_home' });
     }

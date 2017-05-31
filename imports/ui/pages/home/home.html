@@ -1,42 +1,44 @@
 <template name="App_home">
     <div class="container">
+
+        <!-- Tap Target Structure -->
+        <div class="tap-target blue white-text" data-activates="openUploadModal">
+            <div class="tap-target-content">
+                <h5>Uploading</h5>
+                <p>Click this button to upload files!</p>
+            </div>
+        </div>
+
+        <ul id="slide-out" class="side-nav fixed">
+            <li><div class="userView">
+                <div class="background">
+                    <img src="img/office.jpg">
+                </div>
+                <a href=""><img class="circle" src="{{getProfile.services.google.picture}}"></a>
+                <a href=""><span class="white-text name">{{getProfile.services.google.name}}</span></a>
+                <a href=""><span class="white-text email">{{getProfile.services.google.email}}</span></a>
+            </div></li>
+            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+            <li><a href="#!">Second Link</a></li>
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Subheader</a></li>
+            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>
+
         {{#if Template.subscriptionsReady}}
             {{> ui_components_fileList files=getFiles}}
         {{else}}
             {{ui_components_spinner}}
         {{/if}}
 
-        <br><br><br>
-
-        {{> uploadForm}}
-
+        <!-- FAB -->
         <div class="fixed-action-btn horizontal">
-            <a class="btn-floating btn-large red">
-                <i class="large material-icons">mode_edit</i>
-            </a>
-            <ul>
-                <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-                <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-                <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-                <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-            </ul>
+            <button id="openUploadModal" data-target="uploadFile" class="waves-effect waves-light btn-floating btn-large green btn">
+                <i class="large material-icons">publish</i>
+            </button>
         </div>
+        {{> ui_modals_uploadFile}}
 
-        <div id="uploadDropZone"></div>
 
     </div>
-
-    <!--<button class="btn btn-lg btn-info" type="button" data-toggle="modal" data-target="#uploadFile">Upload Files</button>
-
-    {{> ui_modals_uploadFile}}-->
-
-</template>
-
-<template name="uploadForm">
-    {{#with currentUpload}}
-        Uploading <b>{{file.name}}</b>:
-        <span id="progress">{{progress.get}}%</span>
-    {{else}}
-        <input id="fileInput" type="file" />
-    {{/with}}
 </template>

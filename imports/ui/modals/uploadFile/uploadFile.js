@@ -2,55 +2,47 @@
  * Created by John Board on 17-Apr-17.
  */
 import './uploadFile.html';
-import './uploadFile.less';
+import '../modalTemplate/modalTemplate.js';
+import { Files } from '../../../api/files/files.js';
+import { generatePreview } from '../../../api/files/methods.js';
 
-Template.ui_modals_uploadFile.onRendered(() => {
-    var previewNode = document.querySelector("#template");
-    previewNode.id = "";
-    var previewTemplate = previewNode.parentNode.innerHTML;
-    previewNode.parentNode.removeChild(previewNode);
+Template.uploadForm.onCreated(function () {
+  this.currentUpload = new ReactiveVar(false);
+});
 
-    Dropzone = require('/libs/client/dropzone/dropzone.js');
-    var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-        url: "/target-url", // Set the url
-        thumbnailWidth: 80,
-        thumbnailHeight: 80,
-        parallelUploads: 20,
-        previewTemplate: previewTemplate,
-        autoQueue: false, // Make sure the files aren't queued until manually added
-        previewsContainer: "#previews", // Define the container to display the previews
-        clickable: ".mv-uploadDropZone" // Define the element that should be used as click trigger to select files.
-    });
+Template.uploadForm.helpers({
+  currentUpload: function () {
+    return Template.instance().currentUpload.get();
+  }
+});
 
-    myDropzone.on("addedfile", function(file) {
-        // Hookup the start button
-        file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
-    });
+Template.uploadForm.events({
+  'change #fileInput': function (e, template) {
+    if (e.currentTarget.files && e.currentTarget.files[0]) {
+      // We upload only one file, in case
+      // multiple files were selected
+      var upload = Files.insert({
+        file: e.currentTarget.files[0],
+        streams: 'dynamic',
+        chunkSize: 'dynamic',
+      }, false);
 
-// Update the total progress bar
-    myDropzone.on("totaluploadprogress", function(progress) {
-        document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
-    });
+      upload.on('start', function () {
+        template.currentUpload.set(this);
+      });
 
-    myDropzone.on("sending", function(file) {
-        // Show the total progress bar when upload starts
-        document.querySelector("#total-progress").style.opacity = "1";
-        // And disable the start button
-        file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
-    });
+      upload.on('end', function (error, fileObj) {
+        if (error) {
+          //alert('Error during upload: ' + error);
+          toastr.error('Error during upload: ' + error, "Error")
+        } else {
+          generatePreview.call(fileObj);
+          toastr.success('File "' + fileObj.name + '" successfully uploaded', "Uploaded.")
+        }
+        template.currentUpload.set(false);
+      });
 
-// Hide the total progress bar when nothing's uploading anymore
-    myDropzone.on("queuecomplete", function(progress) {
-        document.querySelector("#total-progress").style.opacity = "0";
-    });
-
-// Setup the buttons for all transfers
-// The "add files" button doesn't need to be setup because the config
-// `clickable` has already been specified.
-    document.querySelector("#actions .start").onclick = function() {
-        myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
-    };
-    document.querySelector("#actions .cancel").onclick = function() {
-        myDropzone.removeAllFiles(true);
-    };
+      upload.start();
+    }
+  }
 });

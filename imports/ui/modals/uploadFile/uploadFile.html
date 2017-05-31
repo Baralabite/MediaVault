@@ -1,48 +1,34 @@
 <template name="ui_modals_uploadFile">
-    {{#ui_modals_modalTemplate modalID="uploadFile" title="Upload"}}
-        <div class="modal-body">
-            <span class="btn btn-success fileinput-button dz-clickable">
-            <i class="glyphicon glyphicon-plus"></i>
-            <span>Add files...</span>
-            </span>
-
-            <div class="table table-striped" id="previews">
-                <div id="template" class="file-row">
-                    <div>
-                        <span class="preview"><img data-dz-thumbnail /></span>
-                    </div>
-                    <div>
-                        <p class="name" data-dz-name></p>
-                        <strong class="error text-danger" data-dz-errormessage></strong>
-                    </div>
-                    <div>
-                        <p class="size" data-dz-size></p>
-                        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                            <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-primary start">
-                            <i class="glyphicon glyphicon-upload"></i>
-                            <span>Start</span>
-                        </button>
-                        <button data-dz-remove class="btn btn-warning cancel">
-                            <i class="glyphicon glyphicon-ban-circle"></i>
-                            <span>Cancel</span>
-                        </button>
-                        <button data-dz-remove class="btn btn-danger delete">
-                            <i class="glyphicon glyphicon-trash"></i>
-                            <span>Delete</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mv-uploadDropZone"></div>
+    {{#ui_modals_modalTemplate modalID="uploadFile"}}
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>Choose a file to upload.</p>
+            {{> uploadForm}}
         </div>
+
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Done</a>
         </div>
-
     {{/ui_modals_modalTemplate}}
+</template>
+
+<template name="uploadForm">
+    {{#with currentUpload}}
+        Uploading <b>{{file.name}}</b>:
+        <span id="progress">{{progress.get}}%</span>
+        <br><br>
+        <div class="progress">
+            <div class="determinate" style="width: {{progress.get}}%"></div>
+        </div>
+    {{else}}
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>File</span>
+                <input id="fileInput" type="file">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+    {{/with}}
 </template>

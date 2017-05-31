@@ -29,10 +29,11 @@ aldeed:simple-schema
 aldeed:collection2
 ostrio:meteor-root
 mdg:validated-method
-accounts-google
 accounts-ui
 fortawesome:fontawesome
 chrismbeckett:toastr
 shell-server
 erasaur:meteor-lodash
 materialize:materialize
+accounts-google
+percolate:momentum

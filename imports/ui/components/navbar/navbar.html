@@ -5,16 +5,17 @@
 
             <ul class="right hide-on-med-and-down">
                 {{#if Template.subscriptionsReady}}
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{getUsername}}<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <!--<li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{getUsername}}<i class="material-icons right">arrow_drop_down</i></a></li>-->
+                    <li><a class="mv-logout">Logout</a></li>
                 {{/if}}
             </ul>
         </div>
     </nav>
 
     <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!" disabled>{{getUsername}}</a></li>
+        <li><a disabled>{{getUsername}}</a></li>
         <li class="divider"></li>
-        <li><a href="/login">Logout</a></li>
+
     </ul>
 
     <!--

@@ -1,10 +1,14 @@
 <template name="ui_modals_renameFile">
-    {{#ui_modals_modalTemplate modalID=modalID title="Rename"}}
-        <div class="modal-body">
-            <input type="text" class="form-control mv-renameFile" value={{getFileName}}>
+    {{#ui_modals_modalTemplate modalID=modalID}}
+        <div class="modal-content">
+            <h4>Rename</h4>
+            <p>Please enter a new name for the item:</p>
+            <input type="text" class="mv-newFileName" value={{file.name}}>
         </div>
+
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <a href="#!" class="mv-renameFile modal-action modal-close waves-effect waves-green btn-flat blue white-text">Rename</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
         </div>
     {{/ui_modals_modalTemplate}}
 </template>

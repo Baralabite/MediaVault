@@ -13,3 +13,22 @@ export const getProfileName = new ValidatedMethod({
         return Meteor.users.findOne(id).profile.name;
     }
 });
+
+export const getProfile = new ValidatedMethod({
+  name: "Users.methods.getProfile",
+  validate: () => undefined,
+  run: (id) => {
+    return Meteor.users.findOne(id)
+  }
+});
+
+export const getProfilePicture = new ValidatedMethod({
+  name: "Users.methods.getProfilePicture",
+  validate: () => undefined,
+  run: (id) => {
+    if(Meteor.isClient){
+      return false;
+    }
+    return getProfile.call(id).services.google.picture;
+  }
+});
