@@ -2,9 +2,15 @@
  * Created by John Board on 12-Apr-17.
  */
 import './navbar.html';
+import './navbar.less';
+
+Template.ui_components_navbar.onRendered(() => {
+    $(".dropdown-button").dropdown();
+});
 
 Template.ui_components_navbar.helpers({
-    getName: () => "MediaVault"
+    getName: () => "MediaVault",
+    getUsername: () => Meteor.user() ? Meteor.user().profile.name : "Not Logged In"
 });
 
 Template.ui_components_navbar.events({

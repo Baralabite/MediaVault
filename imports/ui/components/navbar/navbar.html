@@ -1,7 +1,25 @@
 <template name="ui_components_navbar">
+    <nav class="nav blue">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">MediaVault</a>
+
+            <ul class="right hide-on-med-and-down">
+                {{#if Template.subscriptionsReady}}
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{getUsername}}<i class="material-icons right">arrow_drop_down</i></a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!" disabled>{{getUsername}}</a></li>
+        <li class="divider"></li>
+        <li><a href="/login">Logout</a></li>
+    </ul>
+
+    <!--
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -12,7 +30,6 @@
                 <a class="navbar-brand" href="#">{{getName}}</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav navbar-right">
@@ -29,7 +46,7 @@
                         </ul>
                     </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+            </div>
+        </div>
+    </nav>-->
 </template>

@@ -25,7 +25,6 @@ practicalmeteor:mocha             # A package for writing and running your meteo
 johanbrook:publication-collector  # Test a Meteor publication by collecting its output
 ostrio:files
 jquery
-twbs:bootstrap
 aldeed:simple-schema
 aldeed:collection2
 ostrio:meteor-root
@@ -36,3 +35,4 @@ fortawesome:fontawesome
 chrismbeckett:toastr
 shell-server
 erasaur:meteor-lodash
+materialize:materialize
