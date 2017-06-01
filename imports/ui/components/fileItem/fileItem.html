@@ -1,10 +1,11 @@
 <template name="ui_components_fileItem">
     {{> ui_modals_renameFile modalID=(getRenameModalID file._id) file=file}}
     {{> ui_modals_deleteFile modalID=(getDeleteModalID file._id) file=file}}
+    {{> ui_modals_editTags modalID=(getTagsModalID file._id) file=file}}
 
     <ul id="{{file._id}}_contextMenu" class='dropdown-content'>
         <li><a href="#{{getRenameModalID file._id}}"><i class="fa fa-2x fa-pencil" aria-hidden="true"></i></a></li>
-        <li><a href="#{{getDeleteModalID file._id}}"><i class="fa fa-2x fa-tag" aria-hidden="true"></i></a></li>
+        <li><a href="#{{getTagsModalID file._id}}"><i class="fa fa-2x fa-tag" aria-hidden="true"></i></a></li>
         <li><a href="{{getLink file._id}}" target="_blank"><i class="fa fa-2x fa-download" aria-hidden="true"></i></a></li>
         <li class="divider"></li>
         <li><a href="#{{getDeleteModalID file._id}}"><i class="fa fa-2x fa-trash" aria-hidden="true"></i></a></li>
@@ -22,10 +23,10 @@
                     {{/if}}
                 </div>
                 <div class="card-content">
-                    <span class="card-title">{{getFileName}}</span>
+                    <span class="card-title activator grey-text text-darken-4">{{getFileName}}</span>
                     {{getUploaderName}}<br>
                     {{getFileSize file}}MB
-                    <a class='dropdown-button' data-activates='{{file._id}}_contextMenu'></a>
+                    <span><i class="dropdown-button material-icons right" data-activates='{{file._id}}_contextMenu'>more_vert</i></span>
                 </div>
             </div>
         </div>
@@ -39,6 +40,5 @@
         {{getFileSize file}}MB
         {{getUploaderName}}
         {{> ui_modals_shareFile modalID=(getShareModalID file._id) file=file}}
-        {{> ui_modals_editTags modalID=(getTagsModalID file._id) file=file}}
     </li>-->
 </template>
