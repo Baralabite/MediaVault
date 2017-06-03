@@ -108,7 +108,6 @@ export const getUserStorageConsumption = new ValidatedMethod({
     _.map(files, (obj) => {
       sum += obj.size;
     });
-    console.log(sum);
     return sum;
   }
 });
