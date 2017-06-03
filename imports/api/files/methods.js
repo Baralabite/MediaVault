@@ -102,11 +102,13 @@ export const getUserStorageConsumption = new ValidatedMethod({
   name: "Files.methods.getUserStorageConsumption",
   validate: () => undefined,
   run: () => {
-    let files = Files.find({userId: this.userId}).fetch();
+
+    let files = Files.find({userId: Meteor.userId()}).fetch();
     let sum = 0;
     _.map(files, (obj) => {
       sum += obj.size;
     });
+    console.log(sum);
     return sum;
   }
 });
