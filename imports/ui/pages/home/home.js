@@ -50,6 +50,7 @@ Template.App_home.helpers({
     query = query ? query : "";
     return queryFiles.call({ query: query });
   },
+  quotaExceeded: () => (1048576*50 < getUserStorageConsumption.call()),
 
   getStorageUsed: () => (getUserStorageConsumption.call() / 1048576).toFixed(2),
 
