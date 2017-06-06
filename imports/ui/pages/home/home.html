@@ -18,7 +18,13 @@
                 <a href=""><span class="white-text name">{{getProfile.services.google.name}}</span></a>
                 <a href=""><span class="white-text email">{{getProfile.services.google.email}}</span></a>
             </div></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>{{getStorageUsed}}</a></li>
+            {{#if quotaExceeded}}
+                <li><a href="#!"><i class="material-icons red-text text-darken-4">cloud</i>{{getStorageUsed}}/50MB</a></li>
+            {{else}}
+                <li><a href="#!"><i class="material-icons">cloud</i>{{getStorageUsed}}/50MB</a></li>
+            {{/if}}
+
+            <!--<li><a href="#!"><i class="material-icons icon-red">cloud</i>{{getStorageUsed}}/50MB</a></li>-->
             <li><a href="#!">Second Link</a></li>
             <li><div class="divider"></div></li>
             <li><a class="subheader">Subheader</a></li>

@@ -4,7 +4,7 @@
 import './uploadFile.html';
 import '../modalTemplate/modalTemplate.js';
 import { Files } from '../../../api/files/files.js';
-import { generatePreview } from '../../../api/files/methods.js';
+import { generatePreview, getUserStorageConsumption } from '../../../api/files/methods.js';
 
 Template.uploadForm.onCreated(function () {
   this.currentUpload = new ReactiveVar(false);
@@ -13,7 +13,17 @@ Template.uploadForm.onCreated(function () {
 Template.uploadForm.helpers({
   currentUpload: function () {
     return Template.instance().currentUpload.get();
-  }
+  },
+  
+  getStorageUsed: () => (getUserStorageConsumption.call() / 1048576).toFixed(2)
+
+  
+});
+
+Template.ui_modals_uploadFile.helpers({
+  quotaExceeded: () => (1048576*50 < getUserStorageConsumption.call()),
+ 
+  getStorageUsed: () => (getUserStorageConsumption.call() / 1048576).toFixed(2)
 });
 
 Template.uploadForm.events({

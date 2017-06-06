@@ -102,7 +102,8 @@ export const getUserStorageConsumption = new ValidatedMethod({
   name: "Files.methods.getUserStorageConsumption",
   validate: () => undefined,
   run: () => {
-    let files = Files.find({userId: this.userId}).fetch();
+
+    let files = Files.find({userId: Meteor.userId()}).fetch();
     let sum = 0;
     _.map(files, (obj) => {
       sum += obj.size;
@@ -119,12 +120,13 @@ export const generatePreview = new ValidatedMethod({
       height: 400
     };
     let previewName = fileObj._id+"_preview.png";
-    let previewPath = "/var/www/eantecomau/previews/" + previewName;
-    let previewURL = 'eante.com.au/previews/'+previewName;
+    let previewPath = process.env.PWD+"/public/previews/" + previewName;
+    let previewURL = '/previews/'+previewName;
 
     if(Meteor.isServer) {
       filepreview = require("../../../libs/filepreview/filepreview.js");
       let output = filepreview.generateSync(fileObj.path, previewPath, options);
+      console.log(fileObj.path);
       Files.update(fileObj._id, {$set: {previewURL: previewURL}});
     }
   }
