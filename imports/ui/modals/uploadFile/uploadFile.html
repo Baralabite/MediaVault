@@ -1,9 +1,16 @@
 <template name="ui_modals_uploadFile">
     {{#ui_modals_modalTemplate modalID="uploadFile"}}
+        
         <div class="modal-content">
+
+            {{#if quotaExceeded}}
+            <h4>Quota has been exceeded</h4>
+            <p>Cannot upload</p>
+            {{else}}
             <h4>Upload</h4>
             <p>Choose a file to upload.</p>
             {{> uploadForm}}
+            {{/if}}
         </div>
 
         <div class="modal-footer">
