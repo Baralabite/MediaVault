@@ -5,7 +5,7 @@ import '../../components/fileList/fileList.js';
 import '../../modals/deleteFile/deleteFile.js';
 import '../../components/spinner/spinner.js';
 import { getProfile } from '../../../api/users/methods.js';
-import { queryFiles } from '../../../api/files/methods.js';
+import { queryFiles, getUserStorageConsumption } from '../../../api/files/methods.js';
 import { Files } from '../../../api/files/files.js';
 import '../../modals/uploadFile/uploadFile.js';
 
@@ -17,7 +17,6 @@ Template.App_home.onCreated(() => {
   template.getProfile = new ReactiveVar();
   getProfile.call(Meteor.userId(), (error, result) => {
     if(!error){
-      console.log(result);
       template.getProfile.set(result);
     }
   });
@@ -28,20 +27,19 @@ Template.App_home.onRendered(() => {
   window.onresize = addPadding;
   $(window).on("orientationchange", addPadding);
 
-  console.log(Files.find().count);
   setTimeout(() => {
     if(Files.find().fetch().length === 0){
       $('.tap-target').tapTarget('open');
     }
   }, 3000);
+
+
 });
 
 function addPadding(){
-  if(window.innerWidth > 900){
-    console.log('more than');
+  if(window.innerWidth > 991){
     $("#__blaze-root").css("padding-left", "300px");
   } else {
-    console.log('less than');
     $("#__blaze-root").css("padding-left", "0px");
   }
 }
@@ -52,6 +50,8 @@ Template.App_home.helpers({
     query = query ? query : "";
     return queryFiles.call({ query: query });
   },
+
+  getStorageUsed: () => (getUserStorageConsumption.call() / 1048576).toFixed(2),
 
   getProfile: () => Template.instance().getProfile.get(),
 });

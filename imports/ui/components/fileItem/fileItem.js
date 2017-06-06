@@ -49,6 +49,23 @@ Template.ui_components_fileItem.events({
     console.log(template.$(".dropdown-button"));
     console.log(template.$('.dropdown-content'));
     template.$(".dropdown-button").dropdown('open');
-    template.$('.dropdown-content').css({left: event.clientX, top:event.clientY});
+    template.$('.dropdown-content').css({
+      position: "fixed",
+      left: event.clientX,
+      top: event.clientY
+    });
+  },
+
+  "mousedown .dropdown-button": (event, template) => {
+    event.preventDefault();
+    if(event.button === 0){
+      console.log(event);
+      template.$(".dropdown-button").dropdown('open');
+      template.$('.dropdown-content').css({
+        position: "fixed",
+        left: event.clientX,
+        top: event.clientY
+      });
+    }
   }
 });

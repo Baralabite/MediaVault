@@ -45,7 +45,7 @@ export const queryFiles = new ValidatedMethod({
   run: ({query}) => {
     /* Generates RegExp pattern from space seperated search strings */
     queryString = ".*"+query.split(" ").join("|")+".*";
-    queryRegExp = new RegExp(queryString);
+    queryRegExp = new RegExp(queryString, "gi");
 
     files = Files.find({"name": queryRegExp}).fetch();
     endFiles = _.map(files, (doc) => doc._id);
@@ -84,6 +84,33 @@ export const setPublic = new ValidatedMethod({
   }
 });
 
+export const getTotalFilesSize = new ValidatedMethod({
+  name: "Files.methods.getTotalFilesSize",
+  validate: () => undefined,
+  run: () => {
+    let files = Files.find().fetch();
+    let sum = 0;
+    _.map(files, (obj) => {
+      sum += obj.size;
+    });
+    return sum;
+  }
+});
+
+
+export const getUserStorageConsumption = new ValidatedMethod({
+  name: "Files.methods.getUserStorageConsumption",
+  validate: () => undefined,
+  run: () => {
+    let files = Files.find({userId: this.userId}).fetch();
+    let sum = 0;
+    _.map(files, (obj) => {
+      sum += obj.size;
+    });
+    return sum;
+  }
+});
+
 export const generatePreview = new ValidatedMethod({
   name: "files.generatePreview",
   validate: () => undefined,
@@ -102,3 +129,4 @@ export const generatePreview = new ValidatedMethod({
     }
   }
 });
+

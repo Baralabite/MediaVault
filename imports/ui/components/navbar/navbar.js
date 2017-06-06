@@ -14,12 +14,26 @@ Template.ui_components_navbar.helpers({
 });
 
 Template.ui_components_navbar.events({
-    "keyup .mv-searchInput": (event, template) => {
-        FlowRouter.setQueryParams({"search": event.target.value});
-    },
-    "click .mv-logout": () => {
-        event.preventDefault();
-        Meteor.logout();
-        location.reload();
+  "keyup .mv-searchInput": (event, template) => {
+    FlowRouter.setQueryParams({"search": event.target.value});
+  },
+  "click .mv-logout": () => {
+    event.preventDefault();
+    Meteor.logout(() => {
+      location.reload();
+    });
+  },
+
+  "submit": (event, template) => {
+      event.preventDefault();
+  },
+
+  "keyup": (event, template) => {
+    if(event.keyCode === 13){
+      event.preventDefault();
+      $(event.target).blur()
+    } else {
+      FlowRouter.setQueryParams({"search": event.target.value});
     }
+  }
 });
