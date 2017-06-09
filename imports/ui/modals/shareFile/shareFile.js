@@ -5,6 +5,27 @@ import './shareFile.html';
 import '../modalTemplate/modalTemplate.js';
 
 import { Files } from '../../../api/files/files.js';
+import { getUsers } from '../../../api/users/methods.js';
+
+Template.ui_modals_shareFile.onRendered(() => {
+  setTimeout(() => {
+    Meteor.call("Users.methods.getUsers", (error, result) => {
+      let autocomplete = {};
+      _.map(result, (doc) => {
+        let key = doc.profile.name;
+        autocomplete[key] = null;
+      });
+      console.log(autocomplete);
+      $('.mv-sharedUserChips').material_chip({
+        autocompleteOptions: {
+          data: autocomplete,
+          limit: Infinity,
+          minLength: 1
+        }
+      });
+    });
+  }, 500);
+});
 
 Template.ui_modals_shareFile.helpers({
     getPublicLink: () => {

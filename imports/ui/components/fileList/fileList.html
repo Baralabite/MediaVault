@@ -5,7 +5,10 @@
         {{else}}
             <div class="row">
                 {{#each getFiles}}
-                    {{> ui_components_fileItem file=(getFileDoc this)}}
+                    {{#if (getFileDoc this)}}
+                        <!-- Sometimes this is undefined?? -->
+                        {{> ui_components_fileItem file=(getFileDoc this)}}
+                    {{/if}}
                 {{/each}}
             </div>
         {{/if}}

@@ -2,10 +2,12 @@
     {{> ui_modals_renameFile modalID=(getRenameModalID file._id) file=file}}
     {{> ui_modals_deleteFile modalID=(getDeleteModalID file._id) file=file}}
     {{> ui_modals_editTags modalID=(getTagsModalID file._id) file=file}}
+    {{> ui_modals_shareFile modalID=(getShareModalID file._id) file=file}}
 
     <ul id="{{file._id}}_contextMenu" class='dropdown-content'>
         <li><a href="#{{getRenameModalID file._id}}"><i class="fa fa-2x fa-pencil" aria-hidden="true"></i></a></li>
         <li><a href="#{{getTagsModalID file._id}}"><i class="fa fa-2x fa-tag" aria-hidden="true"></i></a></li>
+        <li><a href="#{{getShareModalID file._id}}"><i class="fa fa-2x fa-share" aria-hidden="true"></i></a></li>
         <li><a href="{{getLink file._id}}" target="_blank"><i class="fa fa-2x fa-download" aria-hidden="true"></i></a></li>
         <li class="divider"></li>
         <li><a href="#{{getDeleteModalID file._id}}"><i class="fa fa-2x fa-trash" aria-hidden="true"></i></a></li>
@@ -17,7 +19,7 @@
             <div class="card mv-fileItem">
                 <div class="card-image filePreview valign-wrapper center-align center">
                     {{#if file.previewURL}}
-                        <img src="/previews/{{file._id}}_preview.png">
+                        <img src="http://eante.com.au:3030/previews/{{file._id}}_preview.png">
                     {{else}}
                         {{> ui_components_spinner}}
                     {{/if}}

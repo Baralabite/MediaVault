@@ -10,7 +10,11 @@ export const getProfileName = new ValidatedMethod({
         }
     }).validator(),
     run: ({id}) => {
+      try{
         return Meteor.users.findOne(id).profile.name;
+      } catch (ex) {
+        return undefined;
+      }
     }
 });
 
@@ -30,5 +34,13 @@ export const getProfilePicture = new ValidatedMethod({
       return false;
     }
     return getProfile.call(id).services.google.picture;
+  }
+});
+
+export const getUsers = new ValidatedMethod({
+  name: "Users.methods.getUsers",
+  validate: () => undefined,
+  run: () => {
+    return Meteor.users.find().fetch();
   }
 });

@@ -14,6 +14,9 @@ Template.ui_components_fileItem.onCreated(() => {
     uploaderName = new ReactiveVar();
     Template.instance().uploaderName = uploaderName;
 
+    if(Template.instance().data.file==undefined){
+      return;
+    }
     Meteor.call("Users.methods.getProfileName", {id: Template.instance().data.file.userId}, (err, res)=> {
         uploaderName.set(res);
 
@@ -44,28 +47,16 @@ Template.ui_components_fileItem.events({
       Meteor.call("Files.methods.incrementDownloads", {id: this.file._id});
   },
 
-  "contextmenu": (event, template) => {
-    event.preventDefault();
-    console.log(template.$(".dropdown-button"));
-    console.log(template.$('.dropdown-content'));
-    template.$(".dropdown-button").dropdown('open');
-    template.$('.dropdown-content').css({
-      position: "fixed",
-      left: event.clientX,
-      top: event.clientY
-    });
-  },
-
-  "mousedown .dropdown-button": (event, template) => {
-    event.preventDefault();
-    if(event.button === 0){
-      console.log(event);
-      template.$(".dropdown-button").dropdown('open');
-      template.$('.dropdown-content').css({
-        position: "fixed",
-        left: event.clientX,
-        top: event.clientY
-      });
-    }
-  }
+  "contextmenu": dropMenu,
+  "mousedown .dropdown-button": dropMenu
 });
+
+function dropMenu(event, template){
+  event.preventDefault();
+  template.$(".dropdown-button").dropdown('open');
+  template.$('.dropdown-content').css({
+    position: "fixed",
+    left: event.clientX,
+    top: event.clientY
+  });
+}

@@ -47,7 +47,8 @@ Template.uploadForm.events({
           toastr.error('Error during upload: ' + error, "Error")
         } else {
           generatePreview.call(fileObj);
-          toastr.success('File "' + fileObj.name + '" successfully uploaded', "Uploaded.")
+          console.log("Generating preview");
+          Materialize.toast('File "' + fileObj.name + '" successfully uploaded', 4000)
         }
         template.currentUpload.set(false);
       });

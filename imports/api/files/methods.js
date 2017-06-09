@@ -116,12 +116,15 @@ export const generatePreview = new ValidatedMethod({
   name: "files.generatePreview",
   validate: () => undefined,
   run: (fileObj) => {
+    console.log("Generating previews");
     let options = {
       height: 400
     };
     let previewName = fileObj._id+"_preview.png";
     let previewPath = process.env.PWD+"/public/previews/" + previewName;
     let previewURL = '/previews/'+previewName;
+
+    console.log(previewPath);
 
     if(Meteor.isServer) {
       filepreview = require("../../../libs/filepreview/filepreview.js");
